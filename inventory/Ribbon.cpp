@@ -80,5 +80,5 @@ std::string RibbonSection::getString() const
 void RibbonSection::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(shape, states);
-	target.draw(text, states);
+//	target.draw(text, states);
 }

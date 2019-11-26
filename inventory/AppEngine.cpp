@@ -30,8 +30,14 @@ void AppEngine::Init(AppSettings settings_)
 			settings.maxfps = std::stoi(settings.launchOptions.argv[i += 1]);
 	}
 
-	if (!fs::exists("./bobwars"))
-		fs::create_directory("./bobwars");
+	if (!fs::exists("./resource"))
+		fs::create_directory("./resource");
+
+	// TODO: create default inventory.conf file
+	// line 2 = database ip
+	// line 1 = database name
+	// line 3 = database user
+	// line 4 = database password
 
 	window = new sf::RenderWindow(sf::VideoMode(settings.width, settings.height), settings.title);
 	window->setVerticalSyncEnabled(true);
