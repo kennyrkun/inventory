@@ -5,6 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source Files\Ribbon">
+      <UniqueIdentifier>{eb7078e7-7519-4b54-a4a9-0667d74c39ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -17,7 +20,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ribbon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Ribbon</Filter>
+    </ClCompile>
+    <ClCompile Include="RibbonSection.cpp">
+      <Filter>Source Files\Ribbon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -31,7 +37,10 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Ribbon.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Ribbon</Filter>
+    </ClInclude>
+    <ClInclude Include="RibbonSection.hpp">
+      <Filter>Source Files\Ribbon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

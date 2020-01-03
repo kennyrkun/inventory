@@ -6,6 +6,11 @@ Ribbon::Ribbon()
 {
 	shape.setFillColor(sf::Color(230, 230, 230));
 	border.setFillColor(sf::Color(200, 200, 200));
+
+	sectionBorder.setFillColor(sf::Color(230, 230, 230));
+	sectionBorder.setSize(sf::Vector2f(1, 23));
+
+	font.loadFromFile("./resource/tahoma.ttf");
 }
 
 /*
@@ -29,8 +34,7 @@ sf::Vector2f Ribbon::getSize() const
 
 RibbonSection Ribbon::addSection(const std::string& title)
 {
-	RibbonSection section;
-	section.setTitle(title);
+	RibbonSection section(title, sections.empty() ? 0 : sections.rbegin()->second.getXSize(), &font);
 	sections.emplace(title, section);
 	return section;
 }
@@ -39,8 +43,20 @@ RibbonSectionOption Ribbon::addOptionToSection(const std::string& section, const
 {
 	RibbonSectionOption option;
 	option.title = title;
-	sections[section].options.emplace(title, option);
+	sections[section].addOption(title);
 	return option;
+}
+
+void Ribbon::HandleEvents(sf::Event& event)
+{
+	if (event.type == sf::Event::EventType::MouseMoved)
+	{
+
+	}
+	else if (event.type == sf::Event::EventType::MouseButtonReleased)
+	{
+
+	}
 }
 
 void Ribbon::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -49,36 +65,25 @@ void Ribbon::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(border, states);
 
 	for (auto& x : sections)
+	{
 		target.draw(x.second, states);
+		target.draw(sectionBorder, states);
+	}
 }
 
-void RibbonSectionOption::callFunction()
+/*
+void Ribbon::openSection(const std::string& sectionName)
 {
-	function();
+	/*
+	if (openSection)
+		openSection->close();
+
+	sections[sectionName].open();
+
+	openSection = sections[sectionName];
 }
+*/
 
-RibbonSection::RibbonSection()
+void Ribbon::closeSection(const std::string& sectionname)
 {
-	shape.setSize(sf::Vector2f(50, 23));
-
-	font = sf::Font();
-	font.loadFromFile("resource/tahoma.ttf");
-	text = sf::Text("", font);
-}
-
-void RibbonSection::setTitle(const std::string& string)
-{
-	std::cout << "string set to " << string << std::endl;
-	text.setString(string);
-}
-
-std::string RibbonSection::getString() const
-{
-	return text.getString().toAnsiString();
-}
-
-void RibbonSection::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	target.draw(shape, states);
-//	target.draw(text, states);
 }

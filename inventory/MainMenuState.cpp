@@ -22,6 +22,7 @@ void MainMenuState::Init(AppEngine* app_)
 	app = app_;
 
 	RibbonSection file = ribbon.addSection("file");
+	RibbonSection help = ribbon.addSection("help");
 
 	ribbon.setSize(sf::Vector2f(app->window->getSize().x, 23));
 
@@ -55,6 +56,8 @@ void MainMenuState::HandleEvents()
 
 	while (app->window->pollEvent(event))
 	{
+		ribbon.HandleEvents(event);
+
 		if (event.type == sf::Event::EventType::Closed)
 		{
 			app->Quit();
@@ -96,7 +99,7 @@ void MainMenuState::Draw()
 SFUI::Menu* MainMenuState::buildMainMenu()
 {
 	SFUI::Menu* newMenu = new SFUI::Menu(*app->window);
-	newMenu->setPosition(sf::Vector2f(8, 10));
+	newMenu->setPosition(sf::Vector2f(8, 35));
 
 	SFUI::HorizontalBoxLayout* panelContainer= newMenu->addHorizontalBoxLayout();
 

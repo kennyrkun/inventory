@@ -133,12 +133,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Ribbon.cpp" />
+    <ClCompile Include="RibbonSection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppEngine.hpp" />
     <ClInclude Include="AppState.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Ribbon.hpp" />
+    <ClInclude Include="RibbonSection.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

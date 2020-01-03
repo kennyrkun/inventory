@@ -1,42 +1,13 @@
 #ifndef RIBBON_HPP
 #define RIBBON_HPP
 
+#include "RibbonSection.hpp"
+
 #include <SFML/Graphics.hpp>
 
 #include <functional>
 #include <map>
 #include <string>
-
-class RibbonSectionOption
-{
-public:
-	std::string title;
-	std::string hotkey;
-	std::string iconPath;
-	std::function<void()> function;
-
-	// TODO: RibbonSection parent;
-
-	void callFunction();
-};
-
-class RibbonSection : public sf::Drawable
-{
-public:
-	RibbonSection();
-
-	void setTitle(const std::string& string);
-	std::string getString() const;
-
-	std::map<std::string, RibbonSectionOption> options;
-
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-private:
-	sf::Text text;
-	sf::Font font;
-	sf::RectangleShape shape;
-};
 
 class Ribbon : public sf::Drawable
 {
@@ -53,13 +24,24 @@ public:
 	RibbonSection addSection(const std::string& title);
 	RibbonSectionOption addOptionToSection(const std::string& section, const std::string& title);
 
+	void HandleEvents(sf::Event& event);
+
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
 	sf::RectangleShape shape;
 	sf::RectangleShape border;
 
+	sf::Font font;
+
 	std::map<std::string, RibbonSection> sections;
+
+	RibbonSection* openSection = nullptr;
+
+	/*
+	void openSection(const std::string& sectionName);
+	*/
+	void closeSection(const std::string& sectionname);
 };
 
 #endif // !RIBBON_HPP
